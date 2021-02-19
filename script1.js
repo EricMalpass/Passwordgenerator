@@ -19,7 +19,7 @@ form.addEventListener ('generate', e => {
     e.preventDefault()
     var includepasswordLength = passwordLength.value
     var includeuppercase = includeuppercaseElement.checked
-    var includelowercase = includelowercaseElement.checked
+    var includelowercase = 
     var includenumbers = includenumbersElement.checked
     var includeSpecialCharacters = includeSpecialCharactersElement.checked
     var password = generatePassword (passwordLength, includeUppercase, includeLowercase, IncludeNumbers, ImcludeSpecialCharacters)
