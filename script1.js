@@ -1,24 +1,27 @@
-
+/* the varibles get the values*/
 var includePasswordLengthElement=document.getElementById ('includePasswordLength')
 var includeUppercaseElement=document.getElementById ('includeUppercase')
 var includeNumbersElement=document.getElementById ('includeNumbers')
 var includeSpecialCharactersElement=document.getElementById ('includeSpecialCharacters')
 var includeLowercaseElement=document.getElementById ('includeLowercase')
-
 var passwordLength=document.getElementById ('passwordLength')
-var uppercaseCode=arrFromHighToLow (65, 90)
-var lowercaseCode=arrFromHighToLow (97, 122)
-var numbersCode=arrFromHighToLow (48, 57)
-var specialCharacterCode=arrFromHighToLow (33, 47).concat(arrFromHighToLow (58,64)
-).concat(arrFromHighToLow(91, 96)
-).concat(arrFromHighToLow(123, 126))
 
+/* these variables set the character per the ASCII Character Set */ 
+var uppercaseCode=arrCharChart (65, 90)
+var lowercaseCode=arrCharChart (97, 122)
+var numbersCode=arrCharChart (48, 57)
+var specialCharacterCode=arrCharChart (33, 47).concat(arrCharChart (58,64)
+).concat(arrCharChart(91, 96)
+).concat(arrCharChart(123, 126))
+
+/* these variable set the button and to display the password*/
 var btn=document.getElementById('generate')
 var passwordDisplay=document.getElementById('passwordDisplay')
 
+/* this contols the event when the button is clicked*/ 
 btn.addEventListener('click', function(e){
     e.preventDefault()
-    var includePasswordLength=passwordLength.value
+    var includePasswordLength=passwordLength.value   /* it is not reading these */
     var includeUppercase=includeUppercaseElement.checked
     var includeNumbers=includeNumbersElement.checked
     var includeSpecialCharacters=includeSpecialCharactersElement.checked
@@ -26,27 +29,29 @@ btn.addEventListener('click', function(e){
     passwordDisplay.innerText=password
 })
 
+/* this controls the character types and selects their values for the password*/
 function generatePassword(passwordLength, includeNumbers, includeUppercase, includeSpecialCharacters) {
-    let charCodes=lowercase_Code
-    console.log (charCodes)
-    if (includeUppercase) charCodes=charCodes.concat(uppercaseCode)
-    console.log ('hello2')
-    if (includeNumbers) charCodes=charCodes.concat(numbersCode)
-    console.log ('hello3')
-    if (includeSpecialCharacters) charCodes=charCodes.concat(specialCharacterCode)
-    console.log ('hello4')
+    let characters=lowercaseCode
+    console.log (characters)
+    if (includeUppercase) characters=characters.concat(uppercaseCode)
+    console.log (characters=characters.concat(uppercaseCode))
+    if (includeNumbers) characters=characters.concat(numbersCode)
+    console.log (characters.concat(numbersCode))
+    if (includeSpecialCharacters) characters=characters.concat(specialCharacterCode)
+    console.log (characters.concat(specialCharacterCode))
     
     var passwordCharacters = []
     for (let i = 0; i < passwordLength; i++) {
-        var character=charCodes[Math.floor(Math.random() * passwordLength)]
-        passwordCharacters.push (String.fromCharCode(character))
+        var newcharacter=characters[Math.floor(Math.random() * characters.length)] 
+        passwordCharacters.push(String.fromCharCode(newcharacter)) 
     }
     return passwordCharacters.join('')
 }
-function arrFromHighToLow (low, high){
+/* this pushes out the character types from the charter chart*/
+function arrCharChart (low, high){
     var arr=[]
     for (let i=low; i<=high; i++){
-        array.push(i)
+        arr.push(i)
     }
     return arr
 }
